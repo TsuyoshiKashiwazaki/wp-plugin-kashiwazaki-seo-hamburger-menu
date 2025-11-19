@@ -5,7 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2025-11-07
+## [1.0.1] - 2024-11-19
+
+### Added
+- リセット機能にnonce検証を追加
+
+### Changed
+- なし
+
+### Deprecated
+- なし
+
+### Removed
+- なし
+
+### Fixed
+- チェックボックスの設定（ホームリンク表示、構造化データ）が正しく保存されない問題を修正
+- 設定値のサニタイズ処理を追加しセキュリティを強化
+- URL比較ロジックを改善し、現在のページ判定の精度を向上
+
+### Security
+- 設定のサニタイズコールバック関数を追加
+- リセット機能のnonce検証を強化
+
+## [1.0.0] - 2024-11-07
 
 ### Added
 - 初回リリース

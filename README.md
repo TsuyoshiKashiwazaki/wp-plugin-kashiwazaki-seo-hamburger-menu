@@ -1,6 +1,6 @@
 # Kashiwazaki SEO Hamburger Menu
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/TsuyoshiKashiwazaki/wp-plugin-kashiwazaki-seo-hamburger-menu)
+[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/TsuyoshiKashiwazaki/wp-plugin-kashiwazaki-seo-hamburger-menu)
 [![WordPress](https://img.shields.io/badge/wordpress-5.0%2B-blue.svg)](https://wordpress.org/)
 [![PHP](https://img.shields.io/badge/php-7.4%2B-blue.svg)](https://www.php.net/)
 [![License](https://img.shields.io/badge/license-GPL%20v2%2B-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
@@ -149,6 +149,15 @@ kashiwazaki-seo-hamburger-menu/
 現在、カスタムアクションフックはありません。今後のバージョンで追加予定です。
 
 ## 変更履歴
+
+### [1.0.1] - 2024-11-19
+- **修正**: チェックボックスの設定（ホームリンク表示、構造化データ）が正しく保存されない問題を修正
+- **改善**: 設定値のサニタイズ処理を追加しセキュリティを強化
+- **改善**: URL比較ロジックを改善し、現在のページ判定の精度を向上
+- **追加**: リセット機能にnonce検証を追加
+
+### [1.0.0] - 2024-11-07
+- 初回リリース
 
 変更履歴の詳細は [CHANGELOG.md](CHANGELOG.md) をご覧ください。
 

@@ -3,7 +3,7 @@
  * Plugin Name: Kashiwazaki SEO Hamburger Menu
  * Plugin URI: https://www.tsuyoshikashiwazaki.jp
  * Description: 指定した幅になったらハンバーガーメニューを表示するWordPressプラグイン
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: 柏崎剛 (Tsuyoshi Kashiwazaki)
  * Author URI: https://www.tsuyoshikashiwazaki.jp/profile/
  * License: GPL v2 or later
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 
 define('KSHM_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('KSHM_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('KSHM_PLUGIN_VERSION', '1.0.0');
+define('KSHM_PLUGIN_VERSION', '1.0.1');
 
 require_once KSHM_PLUGIN_PATH . 'includes/plugin-links.php';
 
@@ -104,7 +104,7 @@ class KashiwazakiSeoHamburgerMenu {
     }
 
     public function admin_init() {
-        register_setting('kshm_options', 'kshm_options');
+        register_setting('kshm_options', 'kshm_options', array($this, 'sanitize_options'));
 
         add_settings_section(
             'kshm_general_section',
@@ -218,9 +218,46 @@ class KashiwazakiSeoHamburgerMenu {
         );
     }
 
+    public function sanitize_options($input) {
+        $sanitized_input = array();
+
+        // 数値フィールド
+        $sanitized_input['breakpoint'] = isset($input['breakpoint']) ? absint($input['breakpoint']) : 768;
+
+        // テキストフィールド
+        $sanitized_input['menu_position'] = isset($input['menu_position']) ? sanitize_text_field($input['menu_position']) : 'right';
+        $sanitized_input['custom_position_top'] = isset($input['custom_position_top']) ? absint($input['custom_position_top']) : 15;
+        $sanitized_input['custom_position_side'] = isset($input['custom_position_side']) ? sanitize_text_field($input['custom_position_side']) : 'right';
+        $sanitized_input['custom_position_side_value'] = isset($input['custom_position_side_value']) ? absint($input['custom_position_side_value']) : 35;
+        $sanitized_input['menu_type'] = isset($input['menu_type']) ? sanitize_text_field($input['menu_type']) : 'default';
+        $sanitized_input['existing_menu'] = isset($input['existing_menu']) ? sanitize_text_field($input['existing_menu']) : '';
+        $sanitized_input['custom_menu_items'] = isset($input['custom_menu_items']) ? sanitize_textarea_field($input['custom_menu_items']) : '';
+
+        // チェックボックスフィールド - 明示的に0を設定
+        $sanitized_input['show_home_link'] = isset($input['show_home_link']) && $input['show_home_link'] == '1' ? '1' : '0';
+        $sanitized_input['structured_data'] = isset($input['structured_data']) && $input['structured_data'] == '1' ? '1' : '0';
+
+        // カラーフィールド（#付きの16進数カラーコードを検証）
+        $sanitized_input['menu_color'] = isset($input['menu_color']) && preg_match('/^#[a-fA-F0-9]{6}$/', $input['menu_color']) ? $input['menu_color'] : '#333333';
+        $sanitized_input['submenu_color'] = isset($input['submenu_color']) && preg_match('/^#[a-fA-F0-9]{6}$/', $input['submenu_color']) ? $input['submenu_color'] : '#666666';
+        $sanitized_input['background_color'] = isset($input['background_color']) && preg_match('/^#[a-fA-F0-9]{6}$/', $input['background_color']) ? $input['background_color'] : '#ffffff';
+        $sanitized_input['hamburger_color'] = isset($input['hamburger_color']) && preg_match('/^#[a-fA-F0-9]{6}$/', $input['hamburger_color']) ? $input['hamburger_color'] : '#000000';
+        $sanitized_input['hamburger_line_color'] = isset($input['hamburger_line_color']) && preg_match('/^#[a-fA-F0-9]{6}$/', $input['hamburger_line_color']) ? $input['hamburger_line_color'] : '#ffffff';
+        $sanitized_input['hover_color'] = isset($input['hover_color']) && preg_match('/^#[a-fA-F0-9]{6}$/', $input['hover_color']) ? $input['hover_color'] : '#007cba';
+
+        return $sanitized_input;
+    }
+
     public function admin_page() {
         if (isset($_POST['kshm_reset_defaults'])) {
-            $this->reset_to_defaults();
+            // nonceの検証
+            if (isset($_POST['kshm_reset_nonce']) && wp_verify_nonce($_POST['kshm_reset_nonce'], 'kshm_reset_defaults')) {
+                $this->reset_to_defaults();
+            } else {
+                add_action('admin_notices', function() {
+                    echo '<div class="notice notice-error is-dismissible"><p>セキュリティチェックに失敗しました。</p></div>';
+                });
+            }
         }
         include KSHM_PLUGIN_PATH . 'templates/admin-template.php';
     }
@@ -578,39 +615,41 @@ class KashiwazakiSeoHamburgerMenu {
     public function is_current_page($url) {
         // メニューアイテムのURLを正規化
         $check_url = untrailingslashit($url);
-        
+
         // 現在のページURLを取得
         $current_url = untrailingslashit(home_url(add_query_arg(array(), $GLOBALS['wp']->request)));
-        
+
         // ホームページの特別な処理
         if (is_front_page() || is_home()) {
             $home_url = untrailingslashit(home_url());
             // ホームURLと完全一致するか、または'/'のみの場合
-            if ($check_url === $home_url || $check_url === '/' || $check_url === '') {
+            if ($check_url === $home_url || $check_url === '/' || $check_url === '' ||
+                rtrim($check_url, '/') === rtrim($home_url, '/')) {
                 return true;
             }
         }
-        
+
         // 通常のページの場合
-        // 完全一致をチェック
-        if ($current_url === $check_url) {
+        // 完全一致をチェック（末尾スラッシュを無視）
+        if (rtrim($current_url, '/') === rtrim($check_url, '/')) {
             return true;
         }
-        
+
         // パスのみで比較（プロトコルやドメインを除外）
         $current_path = parse_url($current_url, PHP_URL_PATH);
         $check_path = parse_url($check_url, PHP_URL_PATH);
-        
-        if ($current_path && $check_path) {
-            // パスを正規化（スラッシュを統一）
-            $current_path = '/' . trim($current_path, '/');
-            $check_path = '/' . trim($check_path, '/');
-            
-            if ($current_path === $check_path) {
+
+        if ($current_path !== null && $check_path !== null) {
+            // パスを正規化（スラッシュを統一、空の場合は'/'に）
+            $current_path = '/' . ltrim($current_path ?: '/', '/');
+            $check_path = '/' . ltrim($check_path ?: '/', '/');
+
+            // 末尾スラッシュを無視して比較
+            if (rtrim($current_path, '/') === rtrim($check_path, '/')) {
                 return true;
             }
         }
-        
+
         return false;
     }
 }

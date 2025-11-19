@@ -4,7 +4,7 @@ Tags: hamburger menu, responsive, mobile, navigation, seo
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,10 +61,19 @@ Kashiwazaki SEO Hamburger Menuは、レスポンシブデザインに対応し�
 
 == Changelog ==
 
+= 1.0.1 =
+* 修正: チェックボックスの設定（ホームリンク表示、構造化データ）が正しく保存されない問題を修正
+* 改善: 設定値のサニタイズ処理を追加しセキュリティを強化
+* 改善: URL比較ロジックを改善し、現在のページ判定の精度を向上
+* 追加: リセット機能にnonce検証を追加
+
 = 1.0.0 =
 * 初回リリース
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+重要なバグ修正: チェックボックスの設定が保存されない問題を修正しました。
 
 = 1.0.0 =
 初回リリースです。
