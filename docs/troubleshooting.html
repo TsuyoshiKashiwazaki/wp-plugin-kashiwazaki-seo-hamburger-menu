@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>トラブルシューティング - Kashiwazaki SEO Hamburger Menu マニュアル</title>
+<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+
+<button class="hamburger-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+
+<aside class="sidebar">
+<div class="sidebar-header"><h2 style="color:#fff;">Hamburger Menu</h2><span class="version">v1.0.1</span><img src="images/main-visual.png" alt="" style="width:100%;border-radius:4px;margin-top:8px;"></div>
+<ul><li><a href="index.html">概要</a></li><li><a href="setup.html">インストール・初期設定</a></li><li><a href="menu-settings.html">メニュー設定</a></li><li><a href="troubleshooting.html">トラブルシューティング</a></li></ul>
+</aside>
+
+<main class="content">
+<h1>トラブルシューティング</h1>
+
+<p class="lead">Kashiwazaki SEO Hamburger Menu の使用中に発生する可能性のある問題と解決方法をまとめています。</p>
+
+<h2>ハンバーガーメニューが表示されない</h2>
+
+<table class="widefat">
+<thead>
+<tr>
+<th style="width:35%;">原因</th>
+<th>対処法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ブレークポイント設定が画面幅より小さい</td>
+<td>設定画面でブレークポイントの値を確認し、対象デバイスの画面幅に合わせて調整してください</td>
+</tr>
+<tr>
+<td>プラグインが有効化されていない</td>
+<td>管理画面の <strong>プラグイン</strong> 一覧で Kashiwazaki SEO Hamburger Menu が有効になっていることを確認してください</td>
+</tr>
+<tr>
+<td>テーマの CSS との競合</td>
+<td>ブラウザの開発者ツールで要素を検証し、テーマの CSS がハンバーガーメニューの表示を上書きしていないか確認してください</td>
+</tr>
+<tr>
+<td>JavaScript エラー</td>
+<td>ブラウザの開発者ツールのコンソールでエラーがないか確認してください。他のプラグインやテーマの JavaScript と競合している可能性があります</td>
+</tr>
+</tbody>
+</table>
+
+<h2>メニュー項目が表示されない</h2>
+
+<table class="widefat">
+<thead>
+<tr>
+<th style="width:35%;">原因</th>
+<th>対処法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>メニューソースが未設定</td>
+<td>設定画面で WordPress メニューの選択、またはカスタムメニュー項目の追加を行ってください</td>
+</tr>
+<tr>
+<td>選択した WordPress メニューが削除されている</td>
+<td><strong>外観</strong> &gt; <strong>メニュー</strong> で対象メニューが存在するか確認し、必要に応じて再選択してください</td>
+</tr>
+</tbody>
+</table>
+
+<h2>カラー設定が反映されない</h2>
+
+<div class="step">
+<span class="step-number">1</span>
+<div class="step-body">
+<p>設定画面で <strong>設定を保存</strong> をクリックしたか確認してください。</p>
+</div>
+</div>
+
+<div class="step">
+<span class="step-number">2</span>
+<div class="step-body">
+<p>ブラウザのキャッシュをクリアしてページを再読み込みしてください。<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>（Mac: <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>）でスーパーリロードが可能です。</p>
+</div>
+</div>
+
+<div class="step">
+<span class="step-number">3</span>
+<div class="step-body">
+<p>キャッシュプラグイン（WP Super Cache、W3 Total Cache など）を使用している場合は、キャッシュをパージしてください。</p>
+</div>
+</div>
+
+<div class="callout callout-tip">
+<div class="callout-title">ヒント</div>
+<p>テーマやカスタム CSS で <code>!important</code> が使用されている場合、プラグインのカラー設定が上書きされる可能性があります。ブラウザの開発者ツールで優先順位を確認してください。</p>
+</div>
+
+<h2>構造化データが出力されない</h2>
+
+<table class="widefat">
+<thead>
+<tr>
+<th style="width:35%;">原因</th>
+<th>対処法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>メニュー項目が未設定</td>
+<td>メニュー項目が1つ以上設定されていることを確認してください。空のメニューでは構造化データは出力されません</td>
+</tr>
+<tr>
+<td>キャッシュが残っている</td>
+<td>キャッシュプラグインのキャッシュをクリアし、ページのソースコードで JSON-LD の出力を確認してください</td>
+</tr>
+</tbody>
+</table>
+
+<div class="callout callout-note">
+<div class="callout-title">構造化データの確認方法</div>
+<p>ページのソースコード（<kbd>Ctrl</kbd> + <kbd>U</kbd>）を表示し、<code>SiteNavigationElement</code> で検索してください。または、Google のリッチリザルトテストツールで確認できます。</p>
+</div>
+
+<h2>他のプラグインとの競合</h2>
+
+<p>他のプラグインとの競合が疑われる場合は、以下の手順で切り分けを行ってください。</p>
+
+<div class="step">
+<span class="step-number">1</span>
+<div class="step-body">
+<p>Kashiwazaki SEO Hamburger Menu 以外のプラグインをすべて無効化します。</p>
+</div>
+</div>
+
+<div class="step">
+<span class="step-number">2</span>
+<div class="step-body">
+<p>問題が解消するか確認します。解消した場合は、プラグインを1つずつ有効化して競合の原因を特定します。</p>
+</div>
+</div>
+
+<div class="step">
+<span class="step-number">3</span>
+<div class="step-body">
+<p>テーマの切り替えも試してください。デフォルトテーマ（Twenty Twenty-Five など）に切り替えることで、テーマ側の問題かどうかを判別できます。</p>
+</div>
+</div>
+
+<div class="callout callout-warning">
+<div class="callout-title">注意</div>
+<p>プラグインの無効化やテーマの切り替えは、本番環境ではなくステージング環境で行うことを推奨します。</p>
+</div>
+
+<h2>設定画面にアクセスできない</h2>
+
+<p>設定画面が表示されない、または「権限がありません」と表示される場合は、ログイン中のアカウントに <code>manage_options</code> 権限（管理者権限）があることを確認してください。編集者や投稿者の権限ではアクセスできません。</p>
+
+<nav class="page-nav">
+<a href="menu-settings.html" class="prev">&laquo; メニュー設定</a>
+<span></span>
+</div>
+
+<footer class="manual-footer"><p>作者: <a href="https://www.tsuyoshikashiwazaki.jp/profile/" target="_blank" rel="noopener">柏崎剛（Tsuyoshi Kashiwazaki）</a></p><p>プラグイン: Kashiwazaki SEO Hamburger Menu v1.0.1</p></footer>
+</main>
+
+<div class="lightbox"></div>
+<script src="js/manual.js?v=1"></script>
+</body>
+</html>

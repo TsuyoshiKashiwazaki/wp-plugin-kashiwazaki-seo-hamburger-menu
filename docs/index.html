@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>概要 - Kashiwazaki SEO Hamburger Menu マニュアル</title>
+<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+
+<button class="hamburger-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+
+<aside class="sidebar">
+<div class="sidebar-header"><h2 style="color:#fff;">Hamburger Menu</h2><span class="version">v1.0.1</span><img src="images/main-visual.png" alt="" style="width:100%;border-radius:4px;margin-top:8px;"></div>
+<ul><li><a href="index.html">概要</a></li><li><a href="setup.html">インストール・初期設定</a></li><li><a href="menu-settings.html">メニュー設定</a></li><li><a href="troubleshooting.html">トラブルシューティング</a></li></ul>
+</aside>
+
+<main class="content">
+<h1>Kashiwazaki SEO Hamburger Menu マニュアル</h1>
+
+<img src="images/main-visual.png" alt="Kashiwazaki SEO Hamburger Menu メインビジュアル" style="width:100%;border-radius:6px;margin-bottom:24px;">
+
+<p class="lead">Kashiwazaki SEO Hamburger Menu は、WordPress サイトにレスポンシブ対応のハンバーガーメニューを追加するプラグインです。ブレークポイントに基づいた表示制御、6色のカラーカスタマイズ、SiteNavigationElement 構造化データの自動出力に対応し、SEO に配慮したナビゲーションを実現します。</p>
+
+<p>モバイルユーザーにとって使いやすいナビゲーションは、サイトの回遊率とSEO評価に直結します。本プラグインはレスポンシブなハンバーガーメニューを提供し、SiteNavigationElement構造化データでメニュー構造を検索エンジンに伝えます。</p>
+
+<div class="feature-cards">
+<div class="feature-card">
+<span class="icon">&#128241;</span>
+<h4>レスポンシブ対応</h4>
+<p>ブレークポイント設定でモバイル・タブレット向けにハンバーガーメニューを自動表示</p>
+</div>
+<div class="feature-card">
+<span class="icon">&#127912;</span>
+<h4>カラーカスタマイズ</h4>
+<p>メニュー・サブメニュー・ホバー・背景・ボタンの6色を自由に設定</p>
+</div>
+<div class="feature-card">
+<span class="icon">&#128269;</span>
+<h4>構造化データ</h4>
+<p>SiteNavigationElementスキーマを自動出力しメニュー構造を検索エンジンに伝達</p>
+</div>
+</div>
+
+<h2>主な機能</h2>
+
+<ul>
+<li>ブレークポイント設定によるレスポンシブ表示制御</li>
+<li>メニュー位置の選択（左・右・カスタム）</li>
+<li>メニュー開閉アニメーション</li>
+<li>SiteNavigationElement JSON-LD 構造化データの自動出力</li>
+<li>既存の WordPress メニューまたはカスタムメニュー項目の利用</li>
+<li>ホームリンクの表示・非表示切り替え</li>
+<li>6種類のカラー設定（メニューテキスト、サブメニューテキスト、ホバー、背景、ハンバーガーボタン、ハンバーガーライン）</li>
+<li>軽量なフロントエンド（CSS 5.4KB、JS 1.7KB）</li>
+</ul>
+
+<h2>SEO・GEO への効果</h2>
+
+<p>本プラグインは SiteNavigationElement スキーマを JSON-LD 形式で自動出力します。SiteNavigationElement スキーマは、サイトのナビゲーション構造を検索エンジンに正確に伝える役割を果たします。これにより、検索エンジンがサイト内のページ間の関係性を理解しやすくなります。</p>
+
+<p>レスポンシブ対応のハンバーガーメニューは、Google のモバイルファーストインデックスとの互換性を確保します。フロントエンドの負荷は CSS 5.4KB + JS 1.7KB と極めて軽量で、ページ読み込み速度への影響を最小限に抑えます。</p>
+
+<p>GEO（Generative Engine Optimization）の観点では、ナビゲーション構造の構造化データは AI クローラーがサイトコンテンツのマッピングを行う際に有用です。明確なナビゲーション構造を示すことで、AI がサイト全体の構成を正しく把握しやすくなります。</p>
+
+<h2>技術仕様</h2>
+
+<ul>
+<li><strong>データ保存:</strong> wp_options (kshm_options)</li>
+<li><strong>カスタムテーブル:</strong> なし</li>
+<li><strong>外部通信:</strong> なし</li>
+<li><strong>Cron:</strong> なし</li>
+<li><strong>メール:</strong> なし</li>
+<li><strong>セキュリティ:</strong> nonce検証、manage_options権限、sanitize_text_field/sanitize_hex_color</li>
+<li><strong>フロントエンドサイズ:</strong> CSS 5.4KB、JS 1.7KB</li>
+</ul>
+
+<nav class="page-nav">
+<span></span>
+<a href="setup.html" class="next">インストール・初期設定 &raquo;</a>
+</div>
+
+<footer class="manual-footer"><p>作者: <a href="https://www.tsuyoshikashiwazaki.jp/profile/" target="_blank" rel="noopener">柏崎剛（Tsuyoshi Kashiwazaki）</a></p><p>プラグイン: Kashiwazaki SEO Hamburger Menu v1.0.1</p></footer>
+</main>
+
+<div class="lightbox"></div>
+<script src="js/manual.js?v=1"></script>
+</body>
+</html>

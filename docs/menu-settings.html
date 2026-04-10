@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>メニュー設定 - Kashiwazaki SEO Hamburger Menu マニュアル</title>
+<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+
+<button class="hamburger-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+
+<aside class="sidebar">
+<div class="sidebar-header"><h2 style="color:#fff;">Hamburger Menu</h2><span class="version">v1.0.1</span><img src="images/main-visual.png" alt="" style="width:100%;border-radius:4px;margin-top:8px;"></div>
+<ul><li><a href="index.html">概要</a></li><li><a href="setup.html">インストール・初期設定</a></li><li><a href="menu-settings.html">メニュー設定</a></li><li><a href="troubleshooting.html">トラブルシューティング</a></li></ul>
+</aside>
+
+<main class="content">
+<h1>メニュー設定</h1>
+
+<p class="lead">ハンバーガーメニューの表示位置、カラー、メニュー項目などの詳細設定について説明します。</p>
+
+<h2>メニュー位置</h2>
+
+<p>ハンバーガーメニューの表示位置を設定できます。</p>
+
+<figure class="screenshot">
+    <img src="images/screenshots/02-hamburger-detail.png" alt="ハンバーガーメニュー設定" class="lightbox-trigger">
+    <figcaption>メニューのカスタマイズ設定</figcaption>
+</figure>
+
+<h3>フロントエンド表示例</h3>
+<figure class="screenshot">
+    <img src="images/screenshots/03-frontend-hamburger.png" alt="ハンバーガーメニューの表示例" class="lightbox-trigger">
+    <figcaption>モバイル表示時のハンバーガーメニュー</figcaption>
+</figure>
+
+<table class="widefat">
+<thead>
+<tr>
+<th style="width:35%;">位置</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>左（Left）</td>
+<td>画面の左側からスライドインするメニューを表示します</td>
+</tr>
+<tr>
+<td>右（Right）</td>
+<td>画面の右側からスライドインするメニューを表示します</td>
+</tr>
+<tr>
+<td>カスタム（Custom）</td>
+<td>CSS でカスタム位置を指定できます</td>
+</tr>
+</tbody>
+</table>
+
+<h2>ブレークポイント設定</h2>
+
+<p>ハンバーガーメニューが表示される画面幅のしきい値をピクセル単位で設定します。設定値以下の画面幅でメニューが自動的に表示されます。</p>
+
+<div class="callout callout-tip">
+<div class="callout-title">ヒント</div>
+<p>一般的なブレークポイントの目安: スマートフォンのみ <code>480px</code>、タブレット以下 <code>768px</code>、小型デスクトップ以下 <code>1024px</code></p>
+</div>
+
+<h2>メニューソース</h2>
+
+<p>ハンバーガーメニューに表示するメニューのソースを選択します。</p>
+
+<h3>既存の WordPress メニューを使用</h3>
+
+<p>WordPress の <strong>外観</strong> &gt; <strong>メニュー</strong> で作成済みのメニューを選択して使用します。メニューの管理を一元化したい場合に便利です。</p>
+
+<h3>カスタムメニュー項目</h3>
+
+<p>プラグインの設定画面でメニュー項目を個別に追加・編集します。既存のメニュー構造に依存しない独自のナビゲーションを構築できます。</p>
+
+<h2>ホームリンク</h2>
+
+<p>メニューの先頭にホーム（トップページ）へのリンクを自動的に追加するかどうかを切り替えできます。</p>
+
+<h2>カラー設定</h2>
+
+<p>6種類のカラーをカスタマイズできます。すべてカラーピッカーで直感的に設定可能です。</p>
+
+<table class="widefat">
+<thead>
+<tr>
+<th style="width:35%;">設定項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>メニューテキスト色</td>
+<td>メニュー項目のテキスト色を設定します</td>
+</tr>
+<tr>
+<td>サブメニューテキスト色</td>
+<td>サブメニュー項目のテキスト色を設定します</td>
+</tr>
+<tr>
+<td>ホバー色</td>
+<td>メニュー項目にマウスオーバーした際の色を設定します</td>
+</tr>
+<tr>
+<td>背景色</td>
+<td>メニューパネルの背景色を設定します</td>
+</tr>
+<tr>
+<td>ハンバーガーボタン色</td>
+<td>ハンバーガーボタンの背景色を設定します</td>
+</tr>
+<tr>
+<td>ハンバーガーライン色</td>
+<td>ハンバーガーアイコンの3本線の色を設定します</td>
+</tr>
+</tbody>
+</table>
+
+<div class="callout callout-warning">
+<div class="callout-title">注意</div>
+<p>テキスト色と背景色のコントラスト比を十分に確保してください。WCAG 2.1 では、通常テキストに対して 4.5:1 以上のコントラスト比が推奨されています。</p>
+</div>
+
+<h2>アニメーション</h2>
+
+<p>メニューの開閉時にスライドアニメーションが適用されます。メニュー位置の設定に応じて、左または右からスライドインする動作になります。</p>
+
+<h2>構造化データ（JSON-LD）</h2>
+
+<p>本プラグインは SiteNavigationElement スキーマを JSON-LD 形式で自動出力します。メニュー項目を設定すると、以下のような構造化データがページの <code>&lt;head&gt;</code> セクションに出力されます。</p>
+
+<pre><code>{
+  "@context": "https://schema.org",
+  "@type": "SiteNavigationElement",
+  "name": "メニュー項目名",
+  "url": "https://example.com/page/"
+}</code></pre>
+
+<p>この構造化データにより、検索エンジンがサイトのナビゲーション構造を正確に理解できるようになります。設定は自動的に行われるため、追加の操作は不要です。</p>
+
+<div class="callout callout-note">
+<div class="callout-title">補足</div>
+<p>構造化データの出力は、メニュー項目が設定されている場合にのみ行われます。メニュー項目が空の場合は出力されません。</p>
+</div>
+
+<nav class="page-nav">
+<a href="setup.html" class="prev">&laquo; インストール・初期設定</a>
+<a href="troubleshooting.html" class="next">トラブルシューティング &raquo;</a>
+</div>
+
+<footer class="manual-footer"><p>作者: <a href="https://www.tsuyoshikashiwazaki.jp/profile/" target="_blank" rel="noopener">柏崎剛（Tsuyoshi Kashiwazaki）</a></p><p>プラグイン: Kashiwazaki SEO Hamburger Menu v1.0.1</p></footer>
+</main>
+
+<div class="lightbox"></div>
+<script src="js/manual.js?v=1"></script>
+</body>
+</html>

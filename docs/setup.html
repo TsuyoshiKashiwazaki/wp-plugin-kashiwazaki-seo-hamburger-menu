@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>インストール・初期設定 - Kashiwazaki SEO Hamburger Menu マニュアル</title>
+<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+
+<button class="hamburger-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+
+<aside class="sidebar">
+<div class="sidebar-header"><h2 style="color:#fff;">Hamburger Menu</h2><span class="version">v1.0.1</span><img src="images/main-visual.png" alt="" style="width:100%;border-radius:4px;margin-top:8px;"></div>
+<ul><li><a href="index.html">概要</a></li><li><a href="setup.html">インストール・初期設定</a></li><li><a href="menu-settings.html">メニュー設定</a></li><li><a href="troubleshooting.html">トラブルシューティング</a></li></ul>
+</aside>
+
+<main class="content">
+<h1>インストール・初期設定</h1>
+
+<p class="lead">Kashiwazaki SEO Hamburger Menu のインストールから初期設定までの手順を説明します。</p>
+
+<h2>インストール方法</h2>
+
+<div class="step">
+<span class="step-number">1</span>
+<div class="step-body">
+<p>WordPress 管理画面にログインし、左メニューから <strong>プラグイン</strong> &gt; <strong>新規追加</strong> をクリックします。</p>
+</div>
+</div>
+
+<figure class="screenshot">
+    <img src="images/screenshots/00-menu-location.png" alt="管理画面メニューの位置" class="lightbox-trigger">
+    <figcaption>管理画面の左メニューにプラグインが追加されます</figcaption>
+</figure>
+
+<div class="step">
+<span class="step-number">2</span>
+<div class="step-body">
+<p><strong>プラグインのアップロード</strong> をクリックし、ダウンロードした ZIP ファイルを選択してアップロードします。</p>
+</div>
+</div>
+
+<div class="step">
+<span class="step-number">3</span>
+<div class="step-body">
+<p><strong>今すぐインストール</strong> をクリックし、インストール完了後に <strong>有効化</strong> をクリックします。</p>
+</div>
+</div>
+
+<div class="callout callout-tip">
+<div class="callout-title">ヒント</div>
+<p>FTP を使用する場合は、ZIP ファイルを解凍して <code>kashiwazaki-seo-hamburger-menu</code> フォルダを <code>/wp-content/plugins/</code> ディレクトリにアップロードし、管理画面のプラグイン一覧から有効化してください。</p>
+</div>
+
+<h2>初期設定</h2>
+
+<p>プラグインを有効化すると、WordPress 管理画面の左メニューに <strong>Hamburger Menu</strong> の設定項目が表示されます。</p>
+
+<div class="step">
+<span class="step-number">1</span>
+<div class="step-body">
+<p>管理画面の左メニューから <strong>Hamburger Menu</strong> をクリックして設定画面を開きます。</p>
+</div>
+</div>
+
+<div class="step">
+<span class="step-number">2</span>
+<div class="step-body">
+<p><strong>ブレークポイント</strong> を設定します。指定したピクセル幅以下の画面でハンバーガーメニューが表示されます（例: 768px でタブレット以下に表示）。</p>
+</div>
+</div>
+
+<div class="step">
+<span class="step-number">3</span>
+<div class="step-body">
+<p><strong>メニューソース</strong> を選択します。既存の WordPress メニューを使用するか、カスタムメニュー項目を設定するかを選べます。</p>
+</div>
+</div>
+
+<div class="step">
+<span class="step-number">4</span>
+<div class="step-body">
+<p><strong>設定を保存</strong> をクリックして初期設定を完了します。</p>
+</div>
+</div>
+</div>
+
+<h2>動作要件</h2>
+
+<table class="widefat">
+<thead>
+<tr>
+<th style="width:35%;">項目</th>
+<th>要件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WordPress</td>
+<td>5.0 以上</td>
+</tr>
+<tr>
+<td>PHP</td>
+<td>7.0 以上</td>
+</tr>
+<tr>
+<td>権限</td>
+<td>manage_options（管理者）</td>
+</tr>
+</tbody>
+</table>
+
+<div class="callout callout-note">
+<div class="callout-title">データ保存について</div>
+<p>設定データは <code>wp_options</code> テーブルの <code>kshm_options</code> キーに保存されます。カスタムテーブルは作成されません。外部通信も行いません。</p>
+</div>
+
+<h2>セキュリティ</h2>
+
+<p>本プラグインは以下のセキュリティ対策を実装しています。</p>
+
+<ul>
+<li><strong>nonce 検証:</strong> フォーム送信時にリクエストの正当性を検証</li>
+<li><strong>権限チェック:</strong> manage_options 権限を持つユーザーのみ設定変更が可能</li>
+<li><strong>入力サニタイズ:</strong> sanitize_text_field および sanitize_hex_color による入力値の無害化</li>
+</ul>
+
+<nav class="page-nav">
+<a href="index.html" class="prev">&laquo; 概要</a>
+<a href="menu-settings.html" class="next">メニュー設定 &raquo;</a>
+</div>
+
+<footer class="manual-footer"><p>作者: <a href="https://www.tsuyoshikashiwazaki.jp/profile/" target="_blank" rel="noopener">柏崎剛（Tsuyoshi Kashiwazaki）</a></p><p>プラグイン: Kashiwazaki SEO Hamburger Menu v1.0.1</p></footer>
+</main>
+
+<div class="lightbox"></div>
+<script src="js/manual.js?v=1"></script>
+</body>
+</html>
